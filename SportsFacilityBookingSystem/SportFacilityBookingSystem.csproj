@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B331F7A6-D2F2-4AAB-8B71-D453BE90962D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SportFacilityBookingSystem</RootNamespace>
+    <AssemblyName>SportFacilityBookingSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddFacility.cs">
+      <DependentUpon>NewSportsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingInfo.cs">
+      <DependentUpon>NewSportsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CancelInfo.cs">
+      <DependentUpon>NewSportsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FacilityDetail.cs">
+      <DependentUpon>NewSportsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MemberCategory.cs">
+      <DependentUpon>NewSportsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MemberInformation.cs">
+      <DependentUpon>NewSportsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewSportsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewSportsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewSportsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewSportsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewSportsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewSportsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Slot.cs">
+      <DependentUpon>NewSportsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SportAddFacility.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SportAddFacility.Designer.cs">
+      <DependentUpon>SportAddFacility.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SportBookingSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SportBookingSystem.Designer.cs">
+      <DependentUpon>SportBookingSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SportCancelBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SportCancelBooking.Designer.cs">
+      <DependentUpon>SportCancelBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SportEditFacility.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SportEditFacility.Designer.cs">
+      <DependentUpon>SportEditFacility.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SportEditMemberInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SportEditMemberInfo.Designer.cs">
+      <DependentUpon>SportEditMemberInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SportFacility Information.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SportFacility Information.Designer.cs">
+      <DependentUpon>SportFacility Information.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SportMember Information.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SportMember Information.Designer.cs">
+      <DependentUpon>SportMember Information.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SportRegisterMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SportRegisterMember.Designer.cs">
+      <DependentUpon>SportRegisterMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SportSlot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SportSlot.Designer.cs">
+      <DependentUpon>SportSlot.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="SportAddFacility.resx">
+      <DependentUpon>SportAddFacility.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SportBookingSystem.resx">
+      <DependentUpon>SportBookingSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SportCancelBooking.resx">
+      <DependentUpon>SportCancelBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SportEditFacility.resx">
+      <DependentUpon>SportEditFacility.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SportEditMemberInfo.resx">
+      <DependentUpon>SportEditMemberInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SportFacility Information.resx">
+      <DependentUpon>SportFacility Information.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SportMember Information.resx">
+      <DependentUpon>SportMember Information.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SportRegisterMember.resx">
+      <DependentUpon>SportRegisterMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="SportSlot.resx">
+      <DependentUpon>SportSlot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="NewSportsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NewSportsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="NewSportsModel.edmx.diagram">
+      <DependentUpon>NewSportsModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\AddFacility.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NewSportsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewSportsModel.edmx</DependentUpon>
+      <LastGenOutput>NewSportsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="NewSportsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewSportsModel.edmx</DependentUpon>
+      <LastGenOutput>NewSportsModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
