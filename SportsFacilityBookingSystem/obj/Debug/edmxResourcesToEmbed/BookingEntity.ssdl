@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SA46_Team02a_SportsBookingSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AddFacilities">
+    <Key>
+      <PropertyRef Name="FacilityCode" />
+    </Key>
+    <Property Name="FacilityCode" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="FacilityName" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="AddFacility">
+    <Key>
+      <PropertyRef Name="FacilityCode" />
+    </Key>
+    <Property Name="FacilityCode" Type="int" Nullable="false" />
+    <Property Name="FacilityName" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Booking_info">
+    <Key>
+      <PropertyRef Name="BookingTransID" />
+    </Key>
+    <Property Name="BookingTransID" Type="int" Nullable="false" />
+    <Property Name="MemberID" Type="int" />
+    <Property Name="FacilityCode" Type="int" />
+    <Property Name="Booking_Date_and_Time" Type="varchar" MaxLength="20" />
+    <Property Name="Remarks" Type="varchar" MaxLength="20" />
+    <Property Name="SlotID" Type="int" />
+  </EntityType>
+  <EntityType Name="CancelInfo">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="MemberID" Type="int" />
+    <Property Name="FacilityCode" Type="int" />
+    <Property Name="Booking_Date_and_Time" Type="varchar" MaxLength="10" />
+    <Property Name="Remarks" Type="varchar" MaxLength="20" />
+    <Property Name="SlotID" Type="int" />
+  </EntityType>
+  <EntityType Name="MemberCategory">
+    <Key>
+      <PropertyRef Name="MemberCategory" />
+    </Key>
+    <Property Name="MemberCategory" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="MemberDescription" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="MemberInformation">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" Nullable="false" />
+    <Property Name="MemberName" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="Age" Type="int" />
+    <Property Name="MemberAddress" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="eMailID" Type="varchar" MaxLength="30" />
+    <Property Name="MemberCategory" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Slot">
+    <Key>
+      <PropertyRef Name="SlotID" />
+    </Key>
+    <Property Name="SlotID" Type="int" Nullable="false" />
+    <Property Name="Slot_Time" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SA46_Team02a_SportsBookingSystem.dbo.TransactionDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TransactionDetails">
+          <Property Name="FacilityCode" Type="int" />
+          <Property Name="Total" Type="int" />
+          <Property Name="NumberOfBooking" Type="int" />
+          <Property Name="BadConditionQuantity" Type="int" />
+          <Property Name="SlotID" Type="int" />
+          <Property Name="BookingDate" Type="varchar" MaxLength="10" />
+          <Property Name="Available" Type="int" />
+        </EntityType>-->
+  <Association Name="FK__Booking_i__Facil__412EB0B6">
+    <End Role="AddFacility" Type="Self.AddFacility" Multiplicity="0..1" />
+    <End Role="Booking_info" Type="Self.Booking_info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddFacility">
+        <PropertyRef Name="FacilityCode" />
+      </Principal>
+      <Dependent Role="Booking_info">
+        <PropertyRef Name="FacilityCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking_i__Membe__403A8C7D">
+    <End Role="MemberInformation" Type="Self.MemberInformation" Multiplicity="0..1" />
+    <End Role="Booking_info" Type="Self.Booking_info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberInformation">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Booking_info">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking_i__SlotI__4222D4EF">
+    <End Role="Slot" Type="Self.Slot" Multiplicity="0..1" />
+    <End Role="Booking_info" Type="Self.Booking_info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Slot">
+        <PropertyRef Name="SlotID" />
+      </Principal>
+      <Dependent Role="Booking_info">
+        <PropertyRef Name="SlotID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CancelInf__Facil__2F10007B">
+    <End Role="AddFacility" Type="Self.AddFacility" Multiplicity="0..1" />
+    <End Role="CancelInfo" Type="Self.CancelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddFacility">
+        <PropertyRef Name="FacilityCode" />
+      </Principal>
+      <Dependent Role="CancelInfo">
+        <PropertyRef Name="FacilityCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CancelInf__Membe__2E1BDC42">
+    <End Role="MemberInformation" Type="Self.MemberInformation" Multiplicity="0..1" />
+    <End Role="CancelInfo" Type="Self.CancelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberInformation">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="CancelInfo">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CancelInf__SlotI__300424B4">
+    <End Role="Slot" Type="Self.Slot" Multiplicity="0..1" />
+    <End Role="CancelInfo" Type="Self.CancelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Slot">
+        <PropertyRef Name="SlotID" />
+      </Principal>
+      <Dependent Role="CancelInfo">
+        <PropertyRef Name="SlotID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'SA46_Team02a_SportsBookingSystem.dbo.TransactionDetails' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Transacti__Facil__2B3F6F97" />-->
+  <EntityContainer Name="SA46_Team02a_SportsBookingSystemModelStoreContainer">
+    <EntitySet Name="AddFacilities" EntityType="Self.AddFacilities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AddFacility" EntityType="Self.AddFacility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking_info" EntityType="Self.Booking_info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CancelInfo" EntityType="Self.CancelInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberCategory" EntityType="Self.MemberCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberInformation" EntityType="Self.MemberInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Slot" EntityType="Self.Slot" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Booking_i__Facil__412EB0B6" Association="Self.FK__Booking_i__Facil__412EB0B6">
+      <End Role="AddFacility" EntitySet="AddFacility" />
+      <End Role="Booking_info" EntitySet="Booking_info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking_i__Membe__403A8C7D" Association="Self.FK__Booking_i__Membe__403A8C7D">
+      <End Role="MemberInformation" EntitySet="MemberInformation" />
+      <End Role="Booking_info" EntitySet="Booking_info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking_i__SlotI__4222D4EF" Association="Self.FK__Booking_i__SlotI__4222D4EF">
+      <End Role="Slot" EntitySet="Slot" />
+      <End Role="Booking_info" EntitySet="Booking_info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CancelInf__Facil__2F10007B" Association="Self.FK__CancelInf__Facil__2F10007B">
+      <End Role="AddFacility" EntitySet="AddFacility" />
+      <End Role="CancelInfo" EntitySet="CancelInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CancelInf__Membe__2E1BDC42" Association="Self.FK__CancelInf__Membe__2E1BDC42">
+      <End Role="MemberInformation" EntitySet="MemberInformation" />
+      <End Role="CancelInfo" EntitySet="CancelInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CancelInf__SlotI__300424B4" Association="Self.FK__CancelInf__SlotI__300424B4">
+      <End Role="Slot" EntitySet="Slot" />
+      <End Role="CancelInfo" EntitySet="CancelInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

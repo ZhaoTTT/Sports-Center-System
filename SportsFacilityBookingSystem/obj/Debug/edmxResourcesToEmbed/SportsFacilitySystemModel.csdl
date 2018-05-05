@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UpdateSportsFacilityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AddFacility">
+    <Key>
+      <PropertyRef Name="FacilityCode" />
+    </Key>
+    <Property Name="FacilityCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FacilityName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Venue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MaxCount" Type="Int32" />
+    <NavigationProperty Name="BookingInfoes" Relationship="Self.FK__BookingIn__Facil__619B8048" FromRole="AddFacility" ToRole="BookingInfo" />
+    <NavigationProperty Name="CancelInfoes" Relationship="Self.FK__CancelInf__Facil__5165187F" FromRole="AddFacility" ToRole="CancelInfo" />
+  </EntityType>
+  <EntityType Name="BookingInfo">
+    <Key>
+      <PropertyRef Name="BookingTransID" />
+    </Key>
+    <Property Name="BookingTransID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="FacilityCode" Type="Int32" Nullable="false" />
+    <Property Name="SlotID" Type="Int32" Nullable="false" />
+    <Property Name="Booking_Date_and_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AddFacility" Relationship="Self.FK__BookingIn__Facil__619B8048" FromRole="BookingInfo" ToRole="AddFacility" />
+    <NavigationProperty Name="MemberInformation" Relationship="Self.FK__BookingIn__Membe__60A75C0F" FromRole="BookingInfo" ToRole="MemberInformation" />
+    <NavigationProperty Name="Slot" Relationship="Self.FK__BookingIn__SlotI__628FA481" FromRole="BookingInfo" ToRole="Slot" />
+  </EntityType>
+  <EntityType Name="CancelInfo">
+    <Key>
+      <PropertyRef Name="CancelTransID" />
+    </Key>
+    <Property Name="CancelTransID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="FacilityCode" Type="Int32" Nullable="false" />
+    <Property Name="SlotID" Type="Int32" Nullable="false" />
+    <Property Name="Booking_Date_and_Time" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AddFacility" Relationship="Self.FK__CancelInf__Facil__5165187F" FromRole="CancelInfo" ToRole="AddFacility" />
+    <NavigationProperty Name="MemberInformation" Relationship="Self.FK__CancelInf__Membe__534D60F1" FromRole="CancelInfo" ToRole="MemberInformation" />
+    <NavigationProperty Name="Slot" Relationship="Self.FK__CancelInf__SlotI__52593CB8" FromRole="CancelInfo" ToRole="Slot" />
+  </EntityType>
+  <EntityType Name="FacilityDetail">
+    <Key>
+      <PropertyRef Name="FacilityCode" />
+    </Key>
+    <Property Name="FacilityCode" Type="Int32" Nullable="false" />
+    <Property Name="FacilityName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Total" Type="Int32" Nullable="false" />
+    <Property Name="BadConditionQuantity" Type="Int32" Nullable="false" />
+    <Property Name="Available" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="MemberCategory">
+    <Key>
+      <PropertyRef Name="MemberCategory1" />
+    </Key>
+    <Property Name="MemberCategory1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MemberDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MemberInformations" Relationship="Self.FK__MemberInf__Membe__412EB0B6" FromRole="MemberCategory" ToRole="MemberInformation" />
+  </EntityType>
+  <EntityType Name="MemberInformation">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="MemberAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="eMailID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MemberCategory" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BookingInfoes" Relationship="Self.FK__BookingIn__Membe__60A75C0F" FromRole="MemberInformation" ToRole="BookingInfo" />
+    <NavigationProperty Name="CancelInfoes" Relationship="Self.FK__CancelInf__Membe__534D60F1" FromRole="MemberInformation" ToRole="CancelInfo" />
+    <NavigationProperty Name="MemberCategory1" Relationship="Self.FK__MemberInf__Membe__412EB0B6" FromRole="MemberInformation" ToRole="MemberCategory" />
+  </EntityType>
+  <EntityType Name="Slot">
+    <Key>
+      <PropertyRef Name="SlotID" />
+    </Key>
+    <Property Name="SlotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Slot_Time" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BookingInfoes" Relationship="Self.FK__BookingIn__SlotI__628FA481" FromRole="Slot" ToRole="BookingInfo" />
+    <NavigationProperty Name="CancelInfoes" Relationship="Self.FK__CancelInf__SlotI__52593CB8" FromRole="Slot" ToRole="CancelInfo" />
+  </EntityType>
+  <Association Name="FK__BookingIn__Facil__619B8048">
+    <End Role="AddFacility" Type="Self.AddFacility" Multiplicity="1" />
+    <End Role="BookingInfo" Type="Self.BookingInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddFacility">
+        <PropertyRef Name="FacilityCode" />
+      </Principal>
+      <Dependent Role="BookingInfo">
+        <PropertyRef Name="FacilityCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CancelInf__Facil__5165187F">
+    <End Role="AddFacility" Type="Self.AddFacility" Multiplicity="1" />
+    <End Role="CancelInfo" Type="Self.CancelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddFacility">
+        <PropertyRef Name="FacilityCode" />
+      </Principal>
+      <Dependent Role="CancelInfo">
+        <PropertyRef Name="FacilityCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BookingIn__Membe__60A75C0F">
+    <End Role="MemberInformation" Type="Self.MemberInformation" Multiplicity="1" />
+    <End Role="BookingInfo" Type="Self.BookingInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberInformation">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="BookingInfo">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BookingIn__SlotI__628FA481">
+    <End Role="Slot" Type="Self.Slot" Multiplicity="1" />
+    <End Role="BookingInfo" Type="Self.BookingInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Slot">
+        <PropertyRef Name="SlotID" />
+      </Principal>
+      <Dependent Role="BookingInfo">
+        <PropertyRef Name="SlotID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CancelInf__Membe__534D60F1">
+    <End Role="MemberInformation" Type="Self.MemberInformation" Multiplicity="1" />
+    <End Role="CancelInfo" Type="Self.CancelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberInformation">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="CancelInfo">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CancelInf__SlotI__52593CB8">
+    <End Role="Slot" Type="Self.Slot" Multiplicity="1" />
+    <End Role="CancelInfo" Type="Self.CancelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Slot">
+        <PropertyRef Name="SlotID" />
+      </Principal>
+      <Dependent Role="CancelInfo">
+        <PropertyRef Name="SlotID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MemberInf__Membe__412EB0B6">
+    <End Role="MemberCategory" Type="Self.MemberCategory" Multiplicity="1" />
+    <End Role="MemberInformation" Type="Self.MemberInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberCategory">
+        <PropertyRef Name="MemberCategory1" />
+      </Principal>
+      <Dependent Role="MemberInformation">
+        <PropertyRef Name="MemberCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Team02aEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AddFacilities" EntityType="Self.AddFacility" />
+    <EntitySet Name="BookingInfoes" EntityType="Self.BookingInfo" />
+    <EntitySet Name="CancelInfoes" EntityType="Self.CancelInfo" />
+    <EntitySet Name="FacilityDetails" EntityType="Self.FacilityDetail" />
+    <EntitySet Name="MemberCategories" EntityType="Self.MemberCategory" />
+    <EntitySet Name="MemberInformations" EntityType="Self.MemberInformation" />
+    <EntitySet Name="Slots" EntityType="Self.Slot" />
+    <AssociationSet Name="FK__BookingIn__Facil__619B8048" Association="Self.FK__BookingIn__Facil__619B8048">
+      <End Role="AddFacility" EntitySet="AddFacilities" />
+      <End Role="BookingInfo" EntitySet="BookingInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CancelInf__Facil__5165187F" Association="Self.FK__CancelInf__Facil__5165187F">
+      <End Role="AddFacility" EntitySet="AddFacilities" />
+      <End Role="CancelInfo" EntitySet="CancelInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BookingIn__Membe__60A75C0F" Association="Self.FK__BookingIn__Membe__60A75C0F">
+      <End Role="MemberInformation" EntitySet="MemberInformations" />
+      <End Role="BookingInfo" EntitySet="BookingInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BookingIn__SlotI__628FA481" Association="Self.FK__BookingIn__SlotI__628FA481">
+      <End Role="Slot" EntitySet="Slots" />
+      <End Role="BookingInfo" EntitySet="BookingInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CancelInf__Membe__534D60F1" Association="Self.FK__CancelInf__Membe__534D60F1">
+      <End Role="MemberInformation" EntitySet="MemberInformations" />
+      <End Role="CancelInfo" EntitySet="CancelInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CancelInf__SlotI__52593CB8" Association="Self.FK__CancelInf__SlotI__52593CB8">
+      <End Role="Slot" EntitySet="Slots" />
+      <End Role="CancelInfo" EntitySet="CancelInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MemberInf__Membe__412EB0B6" Association="Self.FK__MemberInf__Membe__412EB0B6">
+      <End Role="MemberCategory" EntitySet="MemberCategories" />
+      <End Role="MemberInformation" EntitySet="MemberInformations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

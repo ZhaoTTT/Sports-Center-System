@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UpdateSportsFacilityModelStoreContainer" CdmEntityContainer="Team02aEntities">
+    <EntitySetMapping Name="AddFacilities">
+      <EntityTypeMapping TypeName="UpdateSportsFacilityModel.AddFacility">
+        <MappingFragment StoreEntitySet="AddFacility">
+          <ScalarProperty Name="FacilityCode" ColumnName="FacilityCode" />
+          <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="MaxCount" ColumnName="MaxCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingInfoes">
+      <EntityTypeMapping TypeName="UpdateSportsFacilityModel.BookingInfo">
+        <MappingFragment StoreEntitySet="BookingInfo">
+          <ScalarProperty Name="BookingTransID" ColumnName="BookingTransID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="FacilityCode" ColumnName="FacilityCode" />
+          <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+          <ScalarProperty Name="Booking_Date_and_Time" ColumnName="Booking_Date_and_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CancelInfoes">
+      <EntityTypeMapping TypeName="UpdateSportsFacilityModel.CancelInfo">
+        <MappingFragment StoreEntitySet="CancelInfo">
+          <ScalarProperty Name="CancelTransID" ColumnName="CancelTransID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="FacilityCode" ColumnName="FacilityCode" />
+          <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+          <ScalarProperty Name="Booking_Date_and_Time" ColumnName="Booking_Date_and_Time" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacilityDetails">
+      <EntityTypeMapping TypeName="UpdateSportsFacilityModel.FacilityDetail">
+        <MappingFragment StoreEntitySet="FacilityDetails">
+          <ScalarProperty Name="FacilityCode" ColumnName="FacilityCode" />
+          <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="BadConditionQuantity" ColumnName="BadConditionQuantity" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberCategories">
+      <EntityTypeMapping TypeName="UpdateSportsFacilityModel.MemberCategory">
+        <MappingFragment StoreEntitySet="MemberCategory">
+          <ScalarProperty Name="MemberCategory1" ColumnName="MemberCategory" />
+          <ScalarProperty Name="MemberDescription" ColumnName="MemberDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberInformations">
+      <EntityTypeMapping TypeName="UpdateSportsFacilityModel.MemberInformation">
+        <MappingFragment StoreEntitySet="MemberInformation">
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="MemberAdress" ColumnName="MemberAdress" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="eMailID" ColumnName="eMailID" />
+          <ScalarProperty Name="MemberCategory" ColumnName="MemberCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Slots">
+      <EntityTypeMapping TypeName="UpdateSportsFacilityModel.Slot">
+        <MappingFragment StoreEntitySet="Slot">
+          <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+          <ScalarProperty Name="Slot_Time" ColumnName="Slot_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
